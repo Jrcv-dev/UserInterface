@@ -20,6 +20,7 @@ namespace storeUserInterface.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
+            /*UsuarioConectado userLoged = new UsuarioConectado();
             Usuario usuario = new Usuario();
             usuario.user = username;
             usuario.password = password;
@@ -30,12 +31,23 @@ namespace storeUserInterface.Controllers
             response.Wait();
             var result = response.Result;
             var readresult = result.Content.ReadAsStringAsync().Result;
-            var resultadoFinal = JsonConvert.DeserializeObject<List<UsuarioConectado>>(readresult);
+            var resultadoFinal = JsonConvert.DeserializeObject<UsuarioConectado>(readresult);
+            if (resultadoFinal.isLoged != false)
+            {
+                Session["username"] = resultadofinal.username;
+                Session["roll"] = resultadofinal.roll;
+                return View("Productos");
+            }
+            else
+            {
+                ViewBag.error = "Invalid Account";
+                return View("Index");
+            }*/
             if (username.Equals("acc1") && password.Equals("123") || username.Equals("jesus") && password.Equals("microservicios123"))
             {
                 //Validar el rol de la persona si es admin(empleado) o cliente para saber que vista mostrar(hacerlo en html)
 
-                Session["username"] = usuario.user;
+                Session["username"] = username;
                 return View("Success");//Vista Productos
             }
             else
