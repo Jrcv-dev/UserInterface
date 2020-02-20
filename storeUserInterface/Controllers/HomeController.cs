@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Mvc;
 using storeUserInterface.Models;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace storeUserInterface.Controllers
 {
@@ -20,35 +21,30 @@ namespace storeUserInterface.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
-            /*UsuarioConectado userLoged = new UsuarioConectado();
+            UsuarioConectado userLoged = new UsuarioConectado();
             Usuario usuario = new Usuario();
-            usuario.user = username;
-            usuario.password = password;
+            usuario.UserName = username;
+            usuario.Password = password;
             //Consumir api para obtener account y password y validar
             var client = new HttpClient();
-            client.BaseAddress = new Uri("AQUI VA EL URL DE LA API");
-            var response = client.GetAsync("url?"+usuario);
+            client.BaseAddress = new Uri("http://academysecurity.azurewebsites.net/");
+            //var response = client.PostAsync("api/Sessions/Login"+usuario, new StringContent(""));
+            string json = JsonConvert.SerializeObject(usuario);
+            //string jsonData = @"{
+            //   'Username':'Paco',
+            //   'Password':'churrumais'
+            //}";
+            var httpcontent = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = client.PostAsync("api/Sessions/Login", httpcontent);
             response.Wait();
             var result = response.Result;
             var readresult = result.Content.ReadAsStringAsync().Result;
             var resultadoFinal = JsonConvert.DeserializeObject<UsuarioConectado>(readresult);
-            if (resultadoFinal.isLoged != false)
+            if (resultadoFinal.IsLogged != false)
             {
-                Session["username"] = resultadofinal.username;
-                Session["roll"] = resultadofinal.roll;
+                Session["username"] = resultadoFinal.Username;
+                Session["rol"] = resultadoFinal.Role;
                 return View("Productos");
-            }
-            else
-            {
-                ViewBag.error = "Invalid Account";
-                return View("Index");
-            }*/
-            if (username.Equals("acc1") && password.Equals("123") || username.Equals("jesus") && password.Equals("microservicios123"))
-            {
-                //Validar el rol de la persona si es admin(empleado) o cliente para saber que vista mostrar(hacerlo en html)
-
-                Session["username"] = username;
-                return View("Success");//Vista Productos
             }
             else
             {

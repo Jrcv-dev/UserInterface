@@ -7,7 +7,7 @@ namespace storeUserInterface.Models
 {
     public class UsuarioConectado
     {
-        public bool isLoged { get; set; }
+        public bool IsLogged { get; set; }
         public string Username { get; set; }
         public string Role { get; set; }
     }
