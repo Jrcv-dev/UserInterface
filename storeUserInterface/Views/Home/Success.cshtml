@@ -1,0 +1,27 @@
+﻿
+@{
+                /**/
+
+                Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Success</title>
+</head>
+<body>
+
+    <h3>Success Page</h3>
+    Welcome @Session["username"]
+    <br>
+    @using (Html.BeginForm("Logout", "Home", FormMethod.Get))
+    {
+        <button>Logout</button>
+    }
+
+</body>
+</html>
+
