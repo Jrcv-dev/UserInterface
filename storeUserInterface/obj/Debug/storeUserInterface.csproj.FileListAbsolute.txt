@@ -138,3 +138,6 @@ C:\Users\Curso\source\repos\UserInterface\storeUserInterface\obj\Debug\storeUser
 C:\Users\Curso\source\repos\UserInterface\storeUserInterface\obj\Debug\storeUserInterface.csproj.CopyComplete
 C:\Users\Curso\source\repos\UserInterface\storeUserInterface\obj\Debug\storeUserInterface.dll
 C:\Users\Curso\source\repos\UserInterface\storeUserInterface\obj\Debug\storeUserInterface.pdb
+C:\Users\Curso\source\repos\UserInterface\storeUserInterface\bin\AcademyLog.dll
+C:\Users\Curso\source\repos\UserInterface\storeUserInterface\bin\System.Net.Http.Formatting.dll
+C:\Users\Curso\source\repos\UserInterface\storeUserInterface\bin\System.Net.Http.Formatting.xml

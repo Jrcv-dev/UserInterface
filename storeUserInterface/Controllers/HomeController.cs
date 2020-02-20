@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using storeUserInterface.Models;
 using Newtonsoft.Json;
 using System.Text;
+using AcademyLog;
 
 namespace storeUserInterface.Controllers
 {
@@ -23,17 +24,14 @@ namespace storeUserInterface.Controllers
         {
             UsuarioConectado userLoged = new UsuarioConectado();
             Usuario usuario = new Usuario();
+            //Las propiedades tienen que hacer match con el DTO para poder comunicarse.
             usuario.UserName = username;
             usuario.Password = password;
             //Consumir api para obtener account y password y validar
             var client = new HttpClient();
             client.BaseAddress = new Uri("http://academysecurity.azurewebsites.net/");
-            //var response = client.PostAsync("api/Sessions/Login"+usuario, new StringContent(""));
+            //Mandamos la peticion por el body hacia la api de security
             string json = JsonConvert.SerializeObject(usuario);
-            //string jsonData = @"{
-            //   'Username':'Paco',
-            //   'Password':'churrumais'
-            //}";
             var httpcontent = new StringContent(json, Encoding.UTF8, "application/json");
             var response = client.PostAsync("api/Sessions/Login", httpcontent);
             response.Wait();
@@ -44,6 +42,14 @@ namespace storeUserInterface.Controllers
             {
                 Session["username"] = resultadoFinal.Username;
                 Session["rol"] = resultadoFinal.Role;
+                //Crearmos el objeto que recibira nuestro metodo para la llamada a la api
+                LogEntity logUI = new LogEntity();
+                logUI.aplicacion = "User Interface";
+                logUI.mensaje = "El usuario" + resultadoFinal.Username + "ha iniciado sesion";
+                logUI.fecha = DateTime.Now;
+                //Instanciamos el Log para poder consumir el metodo de conexion a la Api del archivo Dll
+                Log log = new Log();
+                log.ConnectToWebAPI(logUI);
                 return View("Productos");
             }
             else
