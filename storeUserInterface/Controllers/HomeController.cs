@@ -52,7 +52,7 @@ namespace storeUserInterface.Controllers
                 Log log = new Log();
                 log.ConnectToWebAPI(logUI);
                 //return PartialView("~/Views/Producto/Todos.cshtml",lsp);
-                return RedirectToAction("Todos", "Producto");
+                return RedirectToAction("Todos", "Producto",new { id = 1 });
             }
             else
             {
@@ -65,6 +65,8 @@ namespace storeUserInterface.Controllers
         public ActionResult Logout()
         {
             Session.Remove("username");
+            Session.Remove("rol");
+            Session.Remove("idPage");
             return RedirectToAction("Index");
         }
     }

@@ -24,7 +24,7 @@
             @for (int i = 1; i <= Model.Item2; i++)
             {
             <div class="col-sm-1 text-center">
-                @Html.ActionLink("asd", "Todos", new { id = i })
+                @Html.ActionLink("Página "+@i, "Todos", new { id = i })
                 <!--<a class="btn btn-primary">@i</a>-->
             </div>
             }
