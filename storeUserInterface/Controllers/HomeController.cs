@@ -22,6 +22,7 @@ namespace storeUserInterface.Controllers
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
+            List<Producto> lsp = new List<Producto>();
             UsuarioConectado userLoged = new UsuarioConectado();
             Usuario usuario = new Usuario();
             //Las propiedades tienen que hacer match con el DTO para poder comunicarse.
@@ -50,7 +51,8 @@ namespace storeUserInterface.Controllers
                 //Instanciamos el Log para poder consumir el metodo de conexion a la Api del archivo Dll
                 Log log = new Log();
                 log.ConnectToWebAPI(logUI);
-                return View("Productos");
+                //return PartialView("~/Views/Producto/Todos.cshtml",lsp);
+                return RedirectToAction("Todos", "Producto");
             }
             else
             {

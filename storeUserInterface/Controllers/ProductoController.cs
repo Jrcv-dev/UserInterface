@@ -100,10 +100,19 @@ namespace storeUserInterface.Controllers
             }
         }
 
+<<<<<<< HEAD
 
 
         public ActionResult Todos(int id)
+=======
+       
+        public ActionResult Todos()
+>>>>>>> c0db04cae3e683c2da096b5909b6eee7b80cef80
         {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             List<Producto> products = new List<Producto>();
 
             //Consumir api para obtener los productos
