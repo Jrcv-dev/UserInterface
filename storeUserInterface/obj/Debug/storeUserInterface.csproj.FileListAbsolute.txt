@@ -209,7 +209,6 @@ C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\bin\Syste
 C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\bin\System.Web.Helpers.xml
 C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\bin\System.Web.Mvc.xml
 C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\obj\Debug\storeUserInterface.csprojAssemblyReference.cache
 C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\obj\Debug\storeUserInterface.csproj.CoreCompileInputs.cache
 C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\obj\Debug\storeUserInterface.csproj.CopyComplete
 C:\Users\Curso\Desktop\New folder (2)\UserInterface\storeUserInterface\obj\Debug\storeUserInterface.dll
