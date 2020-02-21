@@ -102,19 +102,36 @@ namespace storeUserInterface.Controllers
 
 
 
-        public ActionResult Todos()
+        public ActionResult Todos(int id)
         {
             List<Producto> products = new List<Producto>();
 
             //Consumir api para obtener los productos
             var client = new HttpClient();
             client.BaseAddress = new Uri(Baseurl);
-            var response = client.GetAsync("/api/products/page/1");
+            var response = client.GetAsync("/api/products/page/" + id.ToString());
             response.Wait();
             var result = response.Result;
             var readresult = result.Content.ReadAsStringAsync().Result;
-            var resultadoFinal = JsonConvert.DeserializeObject<List<Producto>>(readresult);
-            return View(resultadoFinal);
+            var resultadoFinal = JsonConvert.DeserializeObject<List<Producto>>(readresult);//Modelo productos
+
+
+            //Consumir api para obtener el número de páginas
+            var clientpag = new HttpClient();
+            clientpag.BaseAddress = new Uri(Baseurl);
+            var responsepag = clientpag.GetAsync("/api/products/page/numPages");
+            responsepag.Wait();
+            var resultpag = responsepag.Result;
+            var readresultpag = resultpag.Content.ReadAsStringAsync().Result;
+            int numPaginas = Convert.ToInt32(readresultpag);
+            //var numPaginas = (int) JsonConvert.DeserializeObject<int>(readresult);//Número de páginas
+
+
+            var tupleData = new Tuple<List<Producto>, int>(resultadoFinal, numPaginas);
+            return View(tupleData);
+
+            //return View(resultadoFinal);
         }
+        
     }
 }
