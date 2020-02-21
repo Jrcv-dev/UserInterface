@@ -134,6 +134,19 @@ namespace storeUserInterface.Controllers
 
             //return View(resultadoFinal);
         }
-        
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session.Remove("username");
+            Session.Remove("rol");
+            Session.Remove("idPage");
+            return RedirectToAction("Index","Home");
+        }
+
+        public ActionResult RedireccionarACambiarPass()
+        {
+            return RedirectToAction("ChangePassword", "ChangePassword");
+        }
+
     }
 }

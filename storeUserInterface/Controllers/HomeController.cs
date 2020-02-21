@@ -46,7 +46,7 @@ namespace storeUserInterface.Controllers
                 //Crearmos el objeto que recibira nuestro metodo para la llamada a la api
                 LogEntity logUI = new LogEntity();
                 logUI.aplicacion = "User Interface";
-                logUI.mensaje = "El usuario" + resultadoFinal.Username + "ha iniciado sesion";
+                logUI.mensaje = "El usuario\t" + resultadoFinal.Username + "\tha iniciado sesion";
                 logUI.fecha = DateTime.Now;
                 //Instanciamos el Log para poder consumir el metodo de conexion a la Api del archivo Dll
                 Log log = new Log();
@@ -61,13 +61,5 @@ namespace storeUserInterface.Controllers
             }
         }
         //[Authorize]
-        [HttpGet]
-        public ActionResult Logout()
-        {
-            Session.Remove("username");
-            Session.Remove("rol");
-            Session.Remove("idPage");
-            return RedirectToAction("Index");
-        }
     }
 }
