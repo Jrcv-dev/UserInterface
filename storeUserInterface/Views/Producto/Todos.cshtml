@@ -1,0 +1,39 @@
+﻿@model IEnumerable<storeUserInterface.Models.Producto>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <a href="~/Producto/Details/@item.IdProduct">
+                <div class="col-md-3 h-50">
+                    <label>@item.Name</label>
+                    <div>
+                        <img src="@item.image" />
+                        <!--https://placeimg.com/100/100/tech -->
+                    </div>
+                </div>
+            </a>
+
+        }
+    </div>
+</div>
+
+
+
+<style>
+    a > div {
+        /*border: 1px solid blue;*/
+        padding: 20px;
+    }
+
+        a > div:hover {
+            background: #f2f2f2;
+        }
+
+
+    div > img {
+        height: 100px;
+        /*height: 50px;*/
+    }
+</style>
+
