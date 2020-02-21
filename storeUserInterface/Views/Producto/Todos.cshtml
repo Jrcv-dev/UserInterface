@@ -1,6 +1,28 @@
 ﻿@model Tuple<List<storeUserInterface.Models.Producto>, int>
 @*@model IEnumerable<storeUserInterface.Models.Producto>*@
 
+<nav class="navbar navbar-light bg-light justify-content-center">
+    <a class="navbar-brand">SofttekStore</a>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+        <ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown link
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                </div>
+            </li>
+        </ul>
+
+    </form>
+</nav>
+
+
 <div class="container">
     <div class="row">
         @foreach (var item in Model.Item1)
