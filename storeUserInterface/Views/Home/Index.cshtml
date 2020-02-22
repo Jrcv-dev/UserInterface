@@ -48,13 +48,13 @@
         </div>*@
 
     <div class="jumbotroon boxlogin">
-
+        @*action="/Home/Login" method="post"*@
         <form action="/Home/Login" method="post" name="flogin" id="flogin">
             <center> <h1 style="color:brown"> Welcome to SofttekStore </h1></center>
             <br />
             <div align="center">
                 @*@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { encType = "multipart/form-data"}))
-                    {*@
+                {*@
                 <label>User: </label>
                 <input type="text" name="username" id="username" class="form-control" placeholder="User" />
                 <br />
@@ -62,7 +62,8 @@
                 <input type="password" name="password" id="password" class=" form-control" placeholder="Password" />
                 <br />
                 <input type="submit" class="btn btn-success" value="Login" />
-                <input type="submit" class="btn btn-success" value="Register" />
+                @*<input action="Home/RegisterUser" method="post" type="submit" class="btn btn-success" value="Register" />*@
+                <button class="btn btn-success">@Html.ActionLink("Registrarse", "RegisterUser")</button>
                 @*}*@
             </div>
         </form>

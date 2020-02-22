@@ -60,6 +60,11 @@ namespace storeUserInterface.Controllers
                 return View("Index");
             }
         }
+        
+        public ActionResult RegisterUser()
+        {
+            return RedirectToAction("RegisterUser","RegistrarUsuario");
+        }
         //[Authorize]
     }
 }

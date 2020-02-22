@@ -136,11 +136,13 @@
     <Compile Include="Controllers\ChangePasswordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\RegistrarUsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChangePassword.cs" />
     <Compile Include="Models\Producto.cs" />
+    <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\UsuarioConectado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,6 +159,7 @@
     <Content Include="Views\Producto\Todos.cshtml" />
     <Content Include="Views\Producto\Details.cshtml" />
     <Content Include="Views\ChangePassword\ChangePassword.cshtml" />
+    <Content Include="Views\RegistrarUsuario\RegisterUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
