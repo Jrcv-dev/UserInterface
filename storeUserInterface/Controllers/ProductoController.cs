@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -11,8 +12,7 @@ namespace storeUserInterface.Controllers
 {
     public class ProductoController : Controller
     {
-        string Baseurl = "http://academyproducts.azurewebsites.net/swagger/ui/index#/";
-
+        string Baseurl = "http://academyproducts.azurewebsites.net/";
         // GET: Producto
         public ActionResult Index()
         {
@@ -42,13 +42,21 @@ namespace storeUserInterface.Controllers
 
         // POST: Producto/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Producto model)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(Baseurl);
+                //Mandamos la peticion por el body hacia la api de security
+                string json = JsonConvert.SerializeObject(model);
+                var httpcontent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = client.PostAsync("api/products", httpcontent);
+                response.Wait();
+                var result = response.Result;
+                var readresult = result.Content.ReadAsStringAsync().Result;
+                //var resultadoFinal = JsonConvert.DeserializeObject<Boolean>(readresult);
+                return RedirectToAction("Todos","Producto", new { id = 1 });
             }
             catch
             {
@@ -59,18 +67,28 @@ namespace storeUserInterface.Controllers
         // GET: Producto/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+
+            return View("Edit");
         }
 
         // POST: Producto/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Producto model, int id)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                model.IdProduct = id;
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(Baseurl);
+                //Mandamos la peticion por el body hacia la api de security
+                string json = JsonConvert.SerializeObject(model);
+                var httpcontent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = client.PutAsync("api/products/"+model.IdProduct, httpcontent);
+                response.Wait();
+                var result = response.Result;
+                var readresult = result.Content.ReadAsStringAsync().Result;
+                return RedirectToAction("Todos","Producto",new { id = 1 });
             }
             catch
             {
@@ -79,20 +97,28 @@ namespace storeUserInterface.Controllers
         }
 
         // GET: Producto/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
 
         // POST: Producto/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        //[HttpPost]
+        public ActionResult Delete(int id)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(Baseurl);
+                //Mandamos la peticion por el body hacia la api de security
+                string json = JsonConvert.SerializeObject(id);
+                var httpcontent = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = client.DeleteAsync("api/products/"+id);
+                response.Wait();
+                var result = response.Result;
+                var readresult = result.Content.ReadAsStringAsync().Result;
+                return RedirectToAction("Todos", "Producto", new { id = 1 });
             }
             catch
             {

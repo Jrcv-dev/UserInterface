@@ -23,7 +23,11 @@
     </div>
 
     <hr />
-
+    @if (Session["rol"].ToString().Equals("INT"))
+    {
+    @Html.ActionLink("Edit Product", "Edit", new { id = Model.IdProduct })
+    @Html.ActionLink("Delete Product", "Delete", new { id = Model.IdProduct })
+    }
 
 </div>
 <p>

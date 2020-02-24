@@ -38,6 +38,7 @@ namespace storeUserInterface.Controllers
             response.Wait();
             var result = response.Result;
             var readresult = result.Content.ReadAsStringAsync().Result;
+            //Revisar el registrar un nuevo usuario porque IsLogged lo trae falso con los que se registran desde la vista.
             var resultadoFinal = JsonConvert.DeserializeObject<UsuarioConectado>(readresult);
             if (resultadoFinal.IsLogged != false)
             {
